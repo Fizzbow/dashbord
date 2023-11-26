@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --deep-linear: linear-gradient(119deg, #3e4365 0%, #292d48 100.89%);
+  --blue-linear: linear-gradient(94deg, #638dfe 1.15%, #3e64e7 98.41%);
+  --orange-linear: linear-gradient(93deg, #ff9b8c 1.35%, #ee7e6d 99.08%);
+}
+
+.deep-linear {
+  background: var(--deep-linear);
+}
+.blue-linear {
+  background: var(--blue-linear);
+}
+.orange-linear {
+  background: var(--orange-linear);
+}
