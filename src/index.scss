@@ -17,3 +17,9 @@
 .orange-linear {
   background: var(--orange-linear);
 }
+.content-fill {
+  /* border: 1px solid #586189; */
+  background: linear-gradient(106deg, #4d547a 2.01%, #2b2f48 99.47%);
+  box-shadow: -0.2rem -0.5rem 0.7rem rgba(133, 138, 174, 0.38),
+    0.2rem 0.2rem 0.5rem black;
+}
