@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,700&family=Poppins:ital,wght@0,300;0,500;0,700;0,900;1,200&display=swap");
+
 :root {
   --deep-linear: linear-gradient(119deg, #3e4365 0%, #292d48 100.89%);
   --blue-linear: linear-gradient(94deg, #638dfe 1.15%, #3e64e7 98.41%);

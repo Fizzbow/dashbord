@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./nav.scss";
 
 const Nav = (props: any) => {
   const [select, setSelect] = useState({ flag: "progress" as FlagType });
