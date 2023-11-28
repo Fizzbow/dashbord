@@ -3,7 +3,9 @@ module.exports = {
   content: ["index.html", "./src/**/*.{js,jsx,ts,tsx,vue,html}"],
   theme: {
     extend: {
-      colors: {},
+      colors: {
+        toggleColor: "rgba(126, 161, 255, 0.36)",
+      },
       fontFamily: {
         Poppins: ["Poppins", "sans-serif"],
         PT: ["PT Serif", "serif"],
@@ -23,6 +25,7 @@ module.exports = {
         btn: "linear-gradient(311deg, #3c446b 0%, #4a5176 88.79%)",
         ptBlueLinear: "linear-gradient(94deg, #638DFE 1.15%, #3E64E7 98.41%)",
         ptOrangeLinear: "linear-gradient(93deg, #FF9B8C 1.35%, #EE7E6D 99.08%)",
+        btnBlueLinear: "linear-gradient(180deg, #638DFE 0%, #3E64E7 100%)",
       },
     },
   },

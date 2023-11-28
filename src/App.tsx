@@ -7,7 +7,7 @@ function App() {
 
   return (
     <div className="deep-linear flex min-h-screen flex-row items-center justify-center px-10">
-      <div className="dashboard-content content-fill flex max-w-4xl flex-1 flex-col rounded-md p-6">
+      <div className="dashboard-content content-fill flex max-w-5xl flex-1 flex-col rounded-md p-6">
         <Nav />
         <Container />
       </div>

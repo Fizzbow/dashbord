@@ -1,0 +1,37 @@
+label {
+  z-index: 1;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 50%;
+    height: 3.2rem;
+    border-radius: 15px;
+    z-index: -1;
+    background: linear-gradient(180deg, #638dfe 0%, #3e64e7 100%);
+    box-shadow: 0px 20.92px 77.404px -31.38px #2f334a,
+      0px 6.276px 4.184px 0px #7b9efe inset;
+    text-align: center;
+    transition: 0.3s ease all, left 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15);
+  }
+}
+
+label div:nth-child(1) {
+  color: #fff;
+}
+
+label div:nth-child(2) {
+  color: #618bfd;
+}
+
+#toggle:checked + label::before {
+  left: calc(50% - 4px);
+}
+
+#toggle:checked + label div:nth-child(2) {
+  color: #fff;
+}
+#toggle:checked + label div:nth-child(1) {
+  color: #618bfd;
+}
