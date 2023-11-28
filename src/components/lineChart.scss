@@ -1,0 +1,10 @@
+.deep {
+  background: linear-gradient(179deg, #ff9b8c 1.23%, #e96856 99.39%);
+  box-shadow: 2.08222px 4.16443px 2.08222px 0px #ffbeb5 inset,
+    -2.08222px -2.08222px 8.32886px 0px #666e90,
+    2.08222px 2.08222px 8.32886px 0px #2a3048;
+}
+.light {
+  opacity: 0.5;
+  background: linear-gradient(180deg, #ff9b8c 0%, rgba(52, 63, 92, 0.83) 100%);
+}

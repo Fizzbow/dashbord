@@ -1,6 +1,7 @@
 import React from "react";
 import Startup from "./Startup";
 import "./label.scss";
+import LineChart from "./LineChart";
 
 const Container = () => {
   return (
@@ -33,7 +34,9 @@ const Container = () => {
           <Toggle />
         </div>
       </div>
-      <div className="container-hero"></div>
+      <div className="container-hero">
+        <LineChart />
+      </div>
     </div>
   );
 };
