@@ -3,6 +3,7 @@ import Startup from "./Startup";
 import "./label.scss";
 import LineChart from "./LineChart";
 import Views from "./Views";
+import Likes from "./Likes";
 
 const Container = () => {
   return (
@@ -38,6 +39,8 @@ const Container = () => {
       <div className="container-hero flex flex-col gap-12">
         <LineChart />
         <Views />
+
+        <Likes />
       </div>
     </div>
   );
