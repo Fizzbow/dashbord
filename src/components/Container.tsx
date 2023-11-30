@@ -2,6 +2,7 @@ import React from "react";
 import Startup from "./Startup";
 import "./label.scss";
 import LineChart from "./LineChart";
+import Views from "./Views";
 
 const Container = () => {
   return (
@@ -34,8 +35,9 @@ const Container = () => {
           <Toggle />
         </div>
       </div>
-      <div className="container-hero">
+      <div className="container-hero flex flex-col gap-12">
         <LineChart />
+        <Views />
       </div>
     </div>
   );
