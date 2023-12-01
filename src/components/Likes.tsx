@@ -22,7 +22,7 @@ const Likes = () => {
       <div className="ml-3 flex-grow">
         <div className="flex  flex-row justify-between font-bold">
           <span className="text-[#8C96CA]">Likes:</span>
-          <span className="text-[#1AC74A]"> +24</span>
+          <span className="text-[#1AC74A]"> +24 </span>
         </div>
         <span className="text-2xl font-extrabold text-white">138420</span>
       </div>
