@@ -3,18 +3,18 @@ import styled from "styled-components";
 import "./totalEn.scss";
 
 const Figcaption = styled.figcaption`
-  border-radius: 100px 100px 0 0;
-  width: 200px;
-  height: 100px;
+  border-radius: 75px 75px 0 0;
+  width: 150px;
+  height: 75px;
   border: 50px solid #31364e;
   border-bottom-style: hidden;
 `;
 const TotalEn = () => {
   return (
-    <div className="totalEn flex w-72 flex-col items-center justify-center rounded-2xl p-10 shadow-btn">
+    <div className="totalEn flex w-60 flex-col items-center justify-center rounded-2xl p-10 shadow-btn">
       <figure className="relative">
         <Figcaption></Figcaption>
-        <svg className="absolute left-0 top-0" width="200" height="100">
+        <svg className="absolute left-0 top-0" width="200" height="75">
           <defs>
             <filter
               id="filter0_ii_0_98"
@@ -97,9 +97,9 @@ const TotalEn = () => {
             stroke="#7780FE"
             fill="url(#paint0_linear_0_98)"
             filter="url(#filter0_ii_0_98)"
-            cx="100"
-            cy="100"
-            r="75px"
+            cx="75"
+            cy="75"
+            r="50px"
           />
         </svg>
       </figure>

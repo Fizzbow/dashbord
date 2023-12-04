@@ -14,7 +14,7 @@ const Like = styled.div`
 
 const Likes = () => {
   return (
-    <Like className="w-35 flex h-20 flex-row items-center rounded-2xl  p-4">
+    <Like className="likes w-35 flex h-20 flex-row items-center rounded-2xl  p-4">
       <div
         className="h-10 w-10 bg-contain bg-no-repeat"
         style={{ backgroundImage: "url(src/assets/heart.png)" }}
