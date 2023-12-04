@@ -40,7 +40,6 @@ const Container = () => {
       <div className="container-hero flex flex-col gap-12">
         <LineChart />
         <Views />
-
         <Likes />
         <TotalEn />
       </div>
