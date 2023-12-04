@@ -42,7 +42,7 @@ label div:nth-child(2) {
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    height: 600px;
+    height: 450px;
     display: grid;
     flex: 1;
     gap: 10px;
@@ -50,7 +50,9 @@ label div:nth-child(2) {
     grid-template-rows: repeat(8, 50px);
     align-content: space-around;
     justify-content: space-between;
+    z-index: 1;
     .lineChart {
+      z-index: -1;
       grid-column: 1 / 4;
       grid-row: 1 / 3;
     }

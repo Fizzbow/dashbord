@@ -27,6 +27,7 @@ const Container = () => {
           Take your
         </span>
         <span className="bg-ptBlueLinear bg-clip-text font-PT text-xl font-bold text-transparent text-shadow-lg">
+          {" "}
           Tumblr
         </span>
         <br />
