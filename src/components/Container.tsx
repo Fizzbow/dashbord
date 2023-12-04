@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Startup from "./Startup";
 import "./label.scss";
 
@@ -7,7 +7,19 @@ import Views from "./Views";
 import Likes from "./Likes";
 import TotalEn from "./TotalEn";
 
+import { eventEmitter } from "../components/Nav";
+
 const Container = () => {
+  useEffect(() => {
+    eventEmitter.on("updateSocial", listener);
+    return () => {
+      eventEmitter.off("updateSocial", listener);
+    };
+  }, []);
+
+  const listener = (data: string) => {
+    // console.log({ data });
+  };
   return (
     <div className="flex flex-row pl-10 pt-10">
       <div className="container-text">
@@ -15,7 +27,6 @@ const Container = () => {
           Take your
         </span>
         <span className="bg-ptBlueLinear bg-clip-text font-PT text-xl font-bold text-transparent text-shadow-lg">
-          {" "}
           Tumblr
         </span>
         <br />

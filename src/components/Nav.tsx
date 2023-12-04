@@ -1,7 +1,14 @@
 import React, { useState } from "react";
+import EventEmitter from "eventemitter3";
+
+const socialMedia = ["Vkontakte", "Tumblr", "Odnoklassniki"];
+const eventEmitter = new EventEmitter();
 
 const Nav = (props: any) => {
-  const [select, setSelect] = useState({ flag: "progress" as FlagType });
+  const [select, setSelect] = useState({
+    flag: "progress" as FlagType,
+    socialMedia: "",
+  });
   return (
     <header className="flex flex-row justify-between">
       <div className="flex flex-row items-center">
@@ -9,13 +16,28 @@ const Nav = (props: any) => {
         <div className="text-2xl font-bold text-white">DO PE</div>
         <Select
           flag={select.flag}
-          changeFlag={(flag: FlagType) => setSelect({ flag })}
+          changeFlag={(flag: FlagType) => setSelect({ ...select, flag })}
         />
 
         <div className="nav-link flex flex-row gap-2">
-          <span className="font-extralight text-[#878EB9]">Vkontakte</span>
-          <span className="font-extralight text-[#878EB9]">Tumblr</span>
-          <span className="font-extralight text-[#878EB9]">Odnoklassniki</span>
+          {socialMedia.map((i, idx) => {
+            return (
+              <span
+                onClick={() => {
+                  eventEmitter.emit("updateSocial", i),
+                    setSelect({ ...select, socialMedia: i });
+                }}
+                className={`cursor-pointer  ${
+                  i === select.socialMedia
+                    ? "font-bold text-[#5A7CE5]"
+                    : "font-extralight text-[#878EB9]"
+                }`}
+                key={idx}
+              >
+                {i}
+              </span>
+            );
+          })}
         </div>
       </div>
 
@@ -95,4 +117,4 @@ const Select = ({ flag, changeFlag }: SelectProps) => {
   );
 };
 
-export default Nav;
+export { Nav, eventEmitter };

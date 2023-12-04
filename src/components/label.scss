@@ -38,6 +38,11 @@ label div:nth-child(2) {
 
 .container {
   &-hero {
+    background-image: url("../assets/hero.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    height: 600px;
     display: grid;
     flex: 1;
     gap: 10px;

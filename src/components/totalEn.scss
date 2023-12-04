@@ -1,4 +1,5 @@
 .totalEn {
+  background: linear-gradient(311deg, #343a55 0%, #404869 88.79%);
   &_outer {
     /** 100是指当前圆的周长： pathLength="100" **/
     stroke-dasharray: 70 100;
