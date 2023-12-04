@@ -4,6 +4,7 @@ import "./label.scss";
 import LineChart from "./LineChart";
 import Views from "./Views";
 import Likes from "./Likes";
+import TotalEn from "./TotalEn";
 
 const Container = () => {
   return (
@@ -41,6 +42,7 @@ const Container = () => {
         <Views />
 
         <Likes />
+        <TotalEn />
       </div>
     </div>
   );
