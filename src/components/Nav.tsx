@@ -12,7 +12,12 @@ const Nav = (props: any) => {
   return (
     <header className="flex flex-row justify-between">
       <div className="flex flex-row items-center">
-        <div className="h-12 w-12 bg-[url('src/assets/heartlogo.svg')] bg-contain bg-center" />
+        <div
+          style={{
+            backgroundImage: `url(${require("../assets/heartlogo.svg")})`,
+          }}
+          className="h-12 w-12 bg-contain bg-center"
+        />
         <div className="text-2xl font-bold text-white">DO PE</div>
         <Select
           flag={select.flag}
