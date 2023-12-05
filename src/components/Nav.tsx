@@ -62,6 +62,7 @@ interface SelectProps {
 
 const Select = ({ flag, changeFlag }: SelectProps) => {
   const [select, toggleSelect] = useState(false);
+  const imgPath = new URL(`../assets/flags/${flag}.avif`, import.meta.url).href;
   return (
     <div
       onClick={() => toggleSelect(!select)}
@@ -74,9 +75,8 @@ const Select = ({ flag, changeFlag }: SelectProps) => {
     >
       <div
         className="nav-select_flag h-8 w-12 rounded-md bg-cover bg-center bg-no-repeat p-4 transition-[background-image]"
-        style={{ backgroundImage: `url("src/assets/flags/${flag}.avif")` }}
+        style={{ backgroundImage: `url(${imgPath})` }}
       ></div>
-
       <div className={`nav-select_icon mx-4  ${select && "rotate-180"}`}>
         <svg
           xmlns="http://www.w3.org/2000/svg"

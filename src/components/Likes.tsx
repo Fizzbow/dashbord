@@ -17,7 +17,7 @@ const Likes = () => {
     <Like className="likes w-35 flex h-20 flex-row items-center rounded-2xl  p-4">
       <div
         className="h-10 w-10 bg-contain bg-no-repeat"
-        style={{ backgroundImage: "url(src/assets/heart.png)" }}
+        style={{ backgroundImage: `url(${require("../assets/heart.png")})` }}
       />
       <div className="ml-3 flex-grow">
         <div className="flex  flex-row justify-between font-bold">
