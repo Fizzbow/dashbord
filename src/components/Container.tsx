@@ -1,6 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Startup from "./Startup";
 import "./label.scss";
+
+import navData from "../data/nav.json";
 
 import LineChart from "./LineChart";
 import Views from "./Views";
@@ -8,28 +10,66 @@ import Likes from "./Likes";
 import TotalEn from "./TotalEn";
 
 import { eventEmitter } from "../components/Nav";
+import styled from "styled-components";
+
+const Cube = styled.div`
+  transform-style: preserve-3d;
+`;
+const Front = styled.div`
+  transition: transform 1s ease-in-out;
+`;
 
 const Container = () => {
   useEffect(() => {
-    eventEmitter.on("updateSocial", listener);
+    eventEmitter.on("updateSocial", (item) => {
+      renderCubeItems(item);
+    });
     return () => {
-      eventEmitter.off("updateSocial", listener);
+      eventEmitter.off("updateSocial", () => {});
     };
   }, []);
 
-  const listener = (data: string) => {
-    // console.log({ data });
+  const renderCubeItems = (item: string) => {
+    const cube = document.querySelector(".cube");
+    if (!cube) return;
+    // click animation
+    if (cube.innerHTML) {
+      const domId = document.getElementById(`${item}`);
+      console.log({ domId });
+    } else {
+      // init dom render
+      if (navData.socialMedia.length > 0 && navData.socialMedia.length <= 4) {
+        navData.socialMedia.forEach((i, index) => {
+          let transform;
+          if (index === 0) {
+            transform = "front";
+          } else if (index === 1) {
+            transform = "bottom";
+          }
+          const font = `<div id='${i}' class="${transform} bg-ptBlueLinear bg-clip-text font-PT text-xl font-bold text-transparent text-shadow-lg">
+               ${i}</div>`;
+
+          cube.innerHTML += font;
+        });
+      }
+    }
   };
+
   return (
     <div className="flex flex-row pl-10 pt-10">
       <div className="container-text">
         <span className="font-Poppins text-xl font-bold text-white text-shadow-lg">
           Take your
         </span>
-        <span className="bg-ptBlueLinear bg-clip-text font-PT text-xl font-bold text-transparent text-shadow-lg">
-          {" "}
-          Tumblr
-        </span>
+
+        <Cube className="cube relative h-[60px] w-[250px]">
+          {/* <Front 
+          className="container-text_transformZ bg-ptBlueLinear bg-clip-text font-PT text-xl font-bold text-transparent text-shadow-lg">
+            {" "}
+            Tumblr
+          </Front> */}
+        </Cube>
+
         <br />
         <span className="font-Poppins text-xl font-bold text-white text-shadow-lg">
           portfolio to the

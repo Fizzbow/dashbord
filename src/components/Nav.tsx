@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import EventEmitter from "eventemitter3";
+import navData from "../data/nav.json";
 
-const socialMedia = ["Vkontakte", "Tumblr", "Odnoklassniki"];
 const eventEmitter = new EventEmitter();
 
 const Nav = (props: any) => {
@@ -9,6 +9,16 @@ const Nav = (props: any) => {
     flag: "progress" as FlagType,
     socialMedia: "",
   });
+  useEffect(() => {
+    if (!select.socialMedia) {
+      /** 默认选择navData数组中第一个 */
+      setSelect({ ...select, socialMedia: "Vkontakte" });
+    }
+  }, []);
+
+  useEffect(() => {
+    eventEmitter.emit("updateSocial", select.socialMedia);
+  }, [select.socialMedia]);
   return (
     <header className="flex flex-row justify-between">
       <div className="flex flex-row items-center">
@@ -25,12 +35,11 @@ const Nav = (props: any) => {
         />
 
         <div className="nav-link flex flex-row gap-2">
-          {socialMedia.map((i, idx) => {
+          {navData.socialMedia.map((i, idx) => {
             return (
               <span
                 onClick={() => {
-                  eventEmitter.emit("updateSocial", i),
-                    setSelect({ ...select, socialMedia: i });
+                  setSelect({ ...select, socialMedia: i });
                 }}
                 className={`cursor-pointer  ${
                   i === select.socialMedia
