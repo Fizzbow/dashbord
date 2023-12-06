@@ -14,7 +14,7 @@ import styled from "styled-components";
 
 const Cube = styled.div`
   transform-style: preserve-3d;
-  transition: transform 1s linear;
+  transition: transform 0.5s linear;
 `;
 const Front = styled.div`
   transition: transform 1s ease-in-out;

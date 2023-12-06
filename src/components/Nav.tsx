@@ -81,6 +81,7 @@ const Select = ({ flag, changeFlag }: SelectProps) => {
     <div
       onClick={() => toggleSelect(!select)}
       className={`nav-select relative 
+          z-10
           mx-4
           flex 
           cursor-pointer items-center justify-center rounded-xl bg-btn p-3 opacity-95 ${

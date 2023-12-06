@@ -3,7 +3,7 @@ import "./lineChart.scss";
 
 const LineChart = () => {
   return (
-    <div className="lineChart flex flex-row items-baseline gap-4 rounded-lg p-4 shadow-btn">
+    <div className="lineChart flex flex-row items-baseline justify-center gap-4 rounded-lg p-4 shadow-btn">
       {["light", "light", "light", "deep", "light"].map((i, idx) => {
         return (
           <div
