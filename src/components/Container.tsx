@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Startup from "./Startup";
 import "./label.scss";
 
@@ -14,15 +14,21 @@ import styled from "styled-components";
 
 const Cube = styled.div`
   transform-style: preserve-3d;
+  transition: transform 1s linear;
 `;
 const Front = styled.div`
   transition: transform 1s ease-in-out;
 `;
 
 const Container = () => {
+  const prevItem = useRef(null);
   useEffect(() => {
     eventEmitter.on("updateSocial", (item) => {
       renderCubeItems(item);
+      // if (prevItem.current !== null) {
+      //   // console.log(prevItem.current);
+      // }
+      prevItem.current = item;
     });
     return () => {
       eventEmitter.off("updateSocial", () => {});
@@ -32,10 +38,10 @@ const Container = () => {
   const renderCubeItems = (item: string) => {
     const cube = document.querySelector(".cube");
     if (!cube) return;
+
     // click animation
     if (cube.innerHTML) {
-      const domId = document.getElementById(`${item}`);
-      console.log({ domId });
+      cubeAnimation(item, prevItem.current);
     } else {
       // init dom render
       if (navData.socialMedia.length > 0 && navData.socialMedia.length <= 4) {
@@ -53,6 +59,19 @@ const Container = () => {
         });
       }
     }
+  };
+
+  const cubeAnimation = (item: string, prevItem: string | null) => {
+    const { socialMedia } = navData;
+    const cube = document.querySelector<HTMLElement>(".cube");
+
+    if (!cube) return;
+    // const prevIdx = socialMedia.indexOf(prevItem);
+    const domIdx = socialMedia.indexOf(item);
+
+    const deg = (domIdx * 90) % 360;
+    cube.style.transform = `rotateX(${deg}deg)`;
+    // cube.style.animation = "roll-up 4s linear";
   };
 
   return (
