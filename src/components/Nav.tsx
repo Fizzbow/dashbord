@@ -24,7 +24,7 @@ const Nav = (props: any) => {
       <div className="flex flex-row items-center">
         <div
           style={{
-            backgroundImage: `url(${require("../assets/heartlogo.svg")})`,
+            backgroundImage: `url("../../src/assets/heartlogo.svg"))`,
           }}
           className="h-12 w-12 bg-contain bg-center"
         />
