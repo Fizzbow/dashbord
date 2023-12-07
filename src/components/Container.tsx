@@ -77,17 +77,12 @@ const Container = () => {
   return (
     <div className="flex flex-row pl-10 pt-10">
       <div className="container-text">
-        <span className="font-Poppins text-xl font-bold text-white text-shadow-lg">
-          Take your
-        </span>
-
-        <Cube className="cube relative h-[60px] w-[250px]">
-          {/* <Front 
-          className="container-text_transformZ bg-ptBlueLinear bg-clip-text font-PT text-xl font-bold text-transparent text-shadow-lg">
-            {" "}
-            Tumblr
-          </Front> */}
-        </Cube>
+        <div className="flex flex-row gap-2">
+          <div className="font-Poppins text-xl font-bold text-white text-shadow-lg">
+            Take your
+          </div>
+          <Cube className="cube relative h-[60px] w-[250px]" />
+        </div>
 
         <br />
         <span className="font-Poppins text-xl font-bold text-white text-shadow-lg">
@@ -109,11 +104,16 @@ const Container = () => {
           <Toggle />
         </div>
       </div>
-      <div className="container-hero">
-        <LineChart />
-        <Views />
-        <Likes />
-        <TotalEn />
+
+      <div className="container-hero relative flex flex-1 flex-row justify-between">
+        <div className="container-hero-left absolute left-[-10%] top-[4.5rem] flex h-96 flex-1 flex-col justify-between">
+          <LineChart />
+          <Views />
+        </div>
+        <div className="container-hero-right">
+          <Likes />
+          <TotalEn />
+        </div>
       </div>
     </div>
   );
