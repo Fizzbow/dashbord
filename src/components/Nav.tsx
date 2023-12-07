@@ -4,8 +4,9 @@ import navData from "../data/nav.json";
 
 import heartlogoPath from "@/assets/heartlogo.svg";
 
-import pansexual from "@/assets/flags/pansexual.avif";
-import progress from "@/assets/flags/progress.avif";
+import pansexualPath from "@/assets/flags/pansexual.avif";
+import progressPath from "@/assets/flags/progress.avif";
+import transPath from "@/assets/flags/trans.avif";
 
 const eventEmitter = new EventEmitter();
 
@@ -82,8 +83,12 @@ interface SelectProps {
 const Select = ({ flag, changeFlag }: SelectProps) => {
   const [select, toggleSelect] = useState(false);
   // const flagUrl = new URL(`/assets/flags/${flag}.avif`, import.meta.url).href;
-  const imgStyle = {
-    backgroundImage: `url('../assets/flags/${flag}.avif')`,
+  const imgStyle = (flag: FlagType) => {
+    let imgUrl;
+    if (flag === "pansexual") imgUrl = pansexualPath;
+    else if (flag === "progress") imgUrl = progressPath;
+    else imgUrl = transPath;
+    return { backgroundImage: `url(${imgUrl})` };
   };
   return (
     <div
@@ -98,7 +103,7 @@ const Select = ({ flag, changeFlag }: SelectProps) => {
     >
       <div
         className="nav-select_flag h-8 w-12 rounded-md bg-cover bg-center bg-no-repeat p-4 transition-[background-image]"
-        style={imgStyle}
+        style={imgStyle(flag)}
       ></div>
       <div className={`nav-select_icon mx-4  ${select && "rotate-180"}`}>
         <svg
