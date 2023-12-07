@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
+import heartPath from "@/assets/heart.png";
+
 const Like = styled.div`
   border: 2.092px solid rgba(93, 101, 142, 0.42);
   background: linear-gradient(
@@ -12,13 +14,11 @@ const Like = styled.div`
   -webkit-backdrop-filter: blur(10px);
 `;
 
+const likeStyle = { backgroundImage: `url(${heartPath})` };
 const Likes = () => {
   return (
     <Like className="likes w-35 flex h-20 flex-row items-center rounded-2xl  p-4">
-      <div
-        className="h-10 w-10 bg-contain bg-no-repeat"
-        style={{ backgroundImage: `url("../../src/assets/heart.png")` }}
-      />
+      <div className="h-10 w-10 bg-contain bg-no-repeat" style={likeStyle} />
       <div className="ml-3 flex-grow">
         <div className="flex  flex-row justify-between font-bold">
           <span className="text-[#8C96CA]">Likes:</span>

@@ -2,6 +2,11 @@ import React, { useState, useEffect } from "react";
 import EventEmitter from "eventemitter3";
 import navData from "../data/nav.json";
 
+import heartlogoPath from "@/assets/heartlogo.svg";
+
+import pansexual from "@/assets/flags/pansexual.avif";
+import progress from "@/assets/flags/progress.avif";
+
 const eventEmitter = new EventEmitter();
 
 const Nav = (props: any) => {
@@ -24,7 +29,7 @@ const Nav = (props: any) => {
       <div className="flex flex-row items-center">
         <div
           style={{
-            backgroundImage: `url("../../src/assets/heartlogo.svg"))`,
+            backgroundImage: `url(${heartlogoPath})`,
           }}
           className="h-12 w-12 bg-contain bg-center"
         />
@@ -76,9 +81,9 @@ interface SelectProps {
 
 const Select = ({ flag, changeFlag }: SelectProps) => {
   const [select, toggleSelect] = useState(false);
-  // const imgPath = new URL(`../assets/flags/${flag}.avif`, import.meta.url).href;
+  // const flagUrl = new URL(`/assets/flags/${flag}.avif`, import.meta.url).href;
   const imgStyle = {
-    backgroundImage: "url(../../src/assets/flags/" + flag + ".avif)",
+    backgroundImage: `url('../assets/flags/${flag}.avif')`,
   };
   return (
     <div

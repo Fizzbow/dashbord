@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
+import eyesPath from "@/assets/eye.png";
+
 const Eye = styled.div`
   background: linear-gradient(135deg, #343a55 0%, #404869 100%) padding-box,
     linear-gradient(-45deg, #343a55 0%, #404869 100%) border-box;
@@ -56,7 +58,7 @@ const Views = () => {
     <div className="views w-35 flex h-20 flex-row items-center rounded-2xl p-4 shadow-btn">
       <Eye className="flex  h-14 w-14 flex-row items-center justify-center  rounded-[50%]">
         <div
-          style={{ backgroundImage: `url("../../src/assets/eye.png")` }}
+          style={{ backgroundImage: `url(${eyesPath})` }}
           className="h-10 w-10 bg-contain bg-center bg-no-repeat"
         />
       </Eye>
