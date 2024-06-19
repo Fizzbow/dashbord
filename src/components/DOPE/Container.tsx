@@ -2,14 +2,14 @@ import React, { useEffect, useRef, useState } from "react";
 import Startup from "./Startup";
 import "./label.scss";
 
-import navData from "../data/nav.json";
+import navData from "../../data/nav.json";
 
 import LineChart from "./LineChart";
 import Views from "./Views";
 import Likes from "./Likes";
 import TotalEn from "./TotalEn";
 
-import { eventEmitter } from "../components/Nav";
+import { eventEmitter } from "./Nav";
 import styled from "styled-components";
 
 const Cube = styled.div`

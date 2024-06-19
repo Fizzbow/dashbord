@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import EventEmitter from "eventemitter3";
-import navData from "../data/nav.json";
+import navData from "../../data/nav.json";
 
 import heartlogoPath from "@/assets/heartlogo.svg";
 
