@@ -10,6 +10,15 @@
   --orange-linear: linear-gradient(93deg, #ff9b8c 1.35%, #ee7e6d 99.08%);
 }
 
+#root {
+  height: 100vh;
+}
+
+a {
+  color: #3e64e7;
+  text-decoration: underline;
+}
+
 .deep-linear {
   background: var(--deep-linear);
 }

@@ -1,20 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.scss";
-import App from "./App";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import Dope from "./pages/Dope";
+import { ROUTER } from "./constants/router";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-  },
-  {
-    path: "dope",
-    element: <Dope />,
-  },
-]);
+const router = createBrowserRouter(ROUTER);
 
 ReactDOM.render(
   <React.StrictMode>
