@@ -1,4 +1,3 @@
-import React from "react";
 import "./startup.scss";
 
 const Startup = () => {
