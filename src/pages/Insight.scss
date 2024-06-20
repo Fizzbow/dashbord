@@ -1,0 +1,24 @@
+.insight {
+  &_logo {
+    &::after {
+      content: "";
+      position: absolute;
+      height: 20px;
+      width: 2px;
+      background-color: #9780ff;
+      transform: translate(-50%, -50%) rotate(45deg);
+      top: 50%;
+      left: 50%;
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      height: 20px;
+      background-color: #fde246;
+      width: 4px;
+      transform: translate(-50%, -50%) rotate(-45deg);
+      top: 50%;
+      left: 50%;
+    }
+  }
+}
