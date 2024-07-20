@@ -8,6 +8,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import { ChartConfig, ChartContainer } from "../ui/chart";
 
 const data = [
   {
@@ -54,9 +55,20 @@ const data = [
   },
 ];
 
+const chartConfig = {
+  desktop: {
+    label: "Desktop",
+    color: "#2563eb",
+  },
+  mobile: {
+    label: "Mobile",
+    color: "#60a5fa",
+  },
+};
+
 const StockTrading = () => {
   return (
-    <ResponsiveContainer width="100%" height="100%">
+    <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
       <LineChart
         width={500}
         height={300}
@@ -81,7 +93,7 @@ const StockTrading = () => {
         />
         <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
       </LineChart>
-    </ResponsiveContainer>
+    </ChartContainer>
   );
 };
 
