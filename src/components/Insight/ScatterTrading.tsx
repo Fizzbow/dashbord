@@ -8,6 +8,7 @@ import {
 } from "recharts";
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "../ui/chart";
 import InsightCardContain from "./InsightCardContain";
+import { CardHeader } from "../ui/card";
 
 const data = [
   { x: 100, y: 200, z: 200 },
@@ -34,7 +35,8 @@ const chartConfig = {
 const ScatterTrading = () => {
   return (
     <InsightCardContain className="col-start-5 col-end-7">
-      <ChartContainer config={chartConfig}>
+      <CardHeader>Analytics</CardHeader>
+      <ChartContainer className="flex-1 w-full" config={chartConfig}>
         <ScatterChart accessibilityLayer>
           <CartesianGrid />
           <XAxis type="number" dataKey="x" name="stature" unit="cm" />
