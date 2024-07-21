@@ -25,43 +25,36 @@ const data = [
     name: "Page A",
     NVDA: 4000,
     AAPL: 2400,
-    amt: 2400,
   },
   {
     name: "Page B",
     NVDA: 3000,
-    AAPL: 1398,
-    amt: 2210,
+    AAPL: 2210,
   },
   {
     name: "Page C",
     NVDA: 2000,
-    AAPL: 9800,
-    amt: 2290,
+    AAPL: 2290,
   },
   {
     name: "Page D",
     NVDA: 2780,
-    AAPL: 3908,
-    amt: 2000,
+    AAPL: 2000,
   },
   {
     name: "Page E",
     NVDA: 1890,
-    AAPL: 4800,
-    amt: 2181,
+    AAPL: 2181,
   },
   {
     name: "Page F",
     NVDA: 2390,
-    AAPL: 3800,
-    amt: 2500,
+    AAPL: 2500,
   },
   {
     name: "Page G",
     NVDA: 3490,
-    AAPL: 4300,
-    amt: 2100,
+    AAPL: 2100,
   },
 ];
 
@@ -92,14 +85,21 @@ const StockTrading = () => {
           }}
         >
           <defs>
-            <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#9780ff" stopOpacity={0.8} />
-              <stop offset="95%" stopColor="#9780ff" stopOpacity={0} />
-            </linearGradient>
+            <defs>
+              <pattern
+                id="colorNVDA"
+                patternUnits="userSpaceOnUse"
+                width="5"
+                height="5"
+              >
+                <circle cx="1" cy="1" r="0.5" fill="#9780ff" />
+                <circle cx="1" cy="1" r="0.5" fill="rgba(0, 0, 0, 0)" />
+              </pattern>
+            </defs>
           </defs>
-          <CartesianGrid strokeDasharray="3 3" />
+          <CartesianGrid stroke="#383838" vertical={false} />
           <XAxis dataKey="name" />
-          <YAxis />
+          <YAxis axisLine={false} />
           <ChartTooltip content={<ChartTooltipContent />} />
           <Legend />
           <Line
@@ -107,6 +107,7 @@ const StockTrading = () => {
             dataKey="AAPL"
             stroke="#fde246"
             dot={false}
+            strokeWidth={2}
             activeDot={{
               r: 7,
               strokeOpacity: 0.5,
@@ -114,23 +115,12 @@ const StockTrading = () => {
               strokeWidth: 7,
             }}
           />
-          {/* <Line
-            dot={false}
-            activeDot={{
-              r: 7,
-              strokeOpacity: 0.5,
-              stroke: "#fde246",
-              strokeWidth: 7,
-            }}
-            type="natural"
-            dataKey="uv"
-            stroke="#fde246"
-          /> */}
           <Area
-            fill="url(#colorUv)"
+            fill="url(#colorNVDA)"
             type="natural"
             dataKey="NVDA"
             stroke="#9780ff"
+            strokeWidth={2}
             activeDot={{
               r: 7,
               stroke: "#9780ff",

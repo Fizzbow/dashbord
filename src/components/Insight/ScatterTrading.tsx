@@ -68,7 +68,6 @@ const ScatterTrading = () => {
             align="right"
             height={36}
           />
-          {/* <CartesianAxis tickLine={false} /> */}
           <XAxis type="number" dataKey="x" />
           <YAxis axisLine={false} type="number" dataKey="y" />
           <ChartTooltip content={<ChartTooltipContent />} />
