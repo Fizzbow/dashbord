@@ -8,7 +8,15 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-import { ChartConfig, ChartContainer } from "../ui/chart";
+import {
+  ChartConfig,
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+} from "../ui/chart";
+import { Card, CardHeader } from "../ui/card";
+import { cn } from "@/lib/utils";
+import InsightCardContain from "./InsightCardContain";
 
 const data = [
   {
@@ -68,32 +76,34 @@ const chartConfig = {
 
 const StockTrading = () => {
   return (
-    <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
-      <LineChart
-        width={500}
-        height={300}
-        data={data}
-        margin={{
-          top: 5,
-          right: 30,
-          left: 20,
-          bottom: 5,
-        }}
-      >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        <Line
-          type="monotone"
-          dataKey="pv"
-          stroke="#8884d8"
-          activeDot={{ r: 8 }}
-        />
-        <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
-      </LineChart>
-    </ChartContainer>
+    <InsightCardContain className="col-start-1 col-end-5">
+      <CardHeader>AI Insight</CardHeader>
+      <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
+        <LineChart
+          accessibilityLayer
+          data={data}
+          margin={{
+            top: 5,
+            right: 30,
+            left: 20,
+            bottom: 5,
+          }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="name" />
+          <YAxis />
+          <ChartTooltip content={<ChartTooltipContent />} />
+          <Legend />
+          <Line
+            type="monotone"
+            dataKey="pv"
+            stroke="#9780ff"
+            activeDot={{ r: 8 }}
+          />
+          <Line type="monotone" dataKey="uv" stroke="#fde246" />
+        </LineChart>
+      </ChartContainer>
+    </InsightCardContain>
   );
 };
 
