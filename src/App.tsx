@@ -1,10 +1,19 @@
 import { ROUTER } from "@/constants/router";
-import { Link } from "react-router-dom";
+import RouterLink from "./components/base/RouterLink";
 
 function App() {
   return (
     <div className="flex flex-col p-5 gap-4">
-      {ROUTER.map((r) => r.path !== "/" && <Link to={r.path!}>{r.path}</Link>)}
+      {ROUTER.map(
+        (r) =>
+          r.path !== "/" && (
+            <RouterLink
+              key={r.path}
+              description="chart info create"
+              title={r.path!}
+            />
+          )
+      )}
     </div>
   );
 }
