@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import "./link.scss";
 import { Card, CardDescription, CardHeader, CardTitle } from "../ui/card";
 
 const RouterLink = ({
@@ -9,7 +10,7 @@ const RouterLink = ({
   description: string;
 }) => {
   return (
-    <Card className={`${cn("w-[350px] cursor-pointer")}`}>
+    <Card className={`link ${cn("relative w-[350px] cursor-pointer")}`}>
       <CardHeader>
         <CardTitle>{title}</CardTitle>
         <CardDescription>{description}</CardDescription>

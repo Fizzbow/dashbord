@@ -9,7 +9,7 @@ function App() {
           r.path !== "/" && (
             <RouterLink
               key={r.path}
-              description="chart info create"
+              description={r.description}
               title={r.path!}
             />
           )
