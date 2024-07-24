@@ -1,6 +1,7 @@
 import App from "@/App";
 import Dope from "@/pages/Dope";
 import Insight from "@/pages/Insight";
+import { Page } from "@/types/page.type";
 import { RouteObject } from "react-router-dom";
 
 export const ROUTER: Array<RouteObject & Page> = [
