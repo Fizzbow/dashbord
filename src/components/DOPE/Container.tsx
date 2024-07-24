@@ -128,7 +128,7 @@ const Toggle = () => {
         type="checkbox"
         className="relative z-10 h-16 w-full cursor-pointer opacity-0"
       />
-      <label className="z-2 absolute left-0 top-0 flex h-16 w-full   flex-row rounded-[12px]   border-2 border-solid border-toggleColor text-xs">
+      <label className="z-2 absolute left-0 top-0 flex h-16 w-full   flex-row rounded-[12px]   border-2 border-solid border-[#7ea1ff5c] text-xs">
         <div className="flex w-[50%] items-center justify-center">
           Get 25 real followers for free
         </div>
