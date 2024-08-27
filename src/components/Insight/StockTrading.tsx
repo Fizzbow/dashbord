@@ -34,22 +34,22 @@ const selectData: Record<string, SelectProp> = {
   apple: {
     val: 5678,
     per: 1.8,
-    bullish: 20,
+    bullish: 0.2,
   },
   banana: {
     val: 788,
     per: 2.8,
-    bullish: 40,
+    bullish: -0.06,
   },
   grapes: {
     val: 1234,
     per: 5.2,
-    bullish: -5,
+    bullish: -0.5,
   },
   pineapple: {
     val: 5555,
     per: 4.2,
-    bullish: 5,
+    bullish: 0.04,
   },
 };
 
@@ -144,9 +144,9 @@ const StockTrading = () => {
           className="~text-xl/4xl font-semibold [--mask-height:0.25em]"
           after={() => (
             <MotionNumber
-              className="~text-base/2xl px-[0.3em] font-semibold [--mask-height:0.3em]"
+              className="~text-base/2xl items-center px-[0.3em] font-semibold [--mask-height:0.3em]"
               value={selectData[selectKey].bullish}
-              format={{ style: "decimal" }}
+              format={{ style: "percent" }}
               style={{ borderRadius: 999, lineHeight: 0.85 }}
               first={() => (
                 <motion.svg
