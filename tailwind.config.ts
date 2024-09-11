@@ -89,7 +89,7 @@ module.exports = {
       boxShadow: {
         btn: "9px 9px 20px 1px rgba(0, 0, 0, 0.3), -7px -7px 20px 1px rgba(133, 138, 174, 0.38)",
         innerBtn:
-          " inset 9px 9px 20px 1px rgba(0, 0, 0, 0.3), inset -7px -7px 20px 1px rgba(133, 138, 174, 0.38);",
+          "inset 9px 9px 20px 1px rgba(0, 0, 0, 0.3), inset -7px -7px 20px 1px rgba(133, 138, 174, 0.38);",
       },
       textShadow: {
         lg: " 0px 8px 8px rgba(0, 0, 0, 0.25);",
