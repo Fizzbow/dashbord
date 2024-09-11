@@ -23,7 +23,7 @@ import {
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import SlideTabs, { Tab } from "./SlideTabs";
+import SlideTabs, { Tab, TabPanel } from "./SlideTabs";
 
 interface SelectProp {
   val: number;
@@ -119,9 +119,10 @@ const StockTrading = () => {
           <Tab index={1} value="2">
             tab2
           </Tab>
-          <Tab index={2} value="3">
-            tab3
-          </Tab>
+
+          <TabPanel index={0} value="1">
+            tab1Content
+          </TabPanel>
         </SlideTabs> */}
         <Select
           onValueChange={(key) => {

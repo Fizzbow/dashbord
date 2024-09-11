@@ -2,6 +2,7 @@ import {
   ButtonHTMLAttributes,
   Children,
   cloneElement,
+  HTMLAttributes,
   isValidElement,
   ReactElement,
   ReactNode,
@@ -15,7 +16,7 @@ export interface SlideTabsProps {
   defaultIndex: number;
 }
 
-export interface TabProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface TabProps<T> extends HTMLAttributes<T> {
   value: string;
   index: number;
 }
@@ -34,30 +35,50 @@ const SlideTabs = ({
   };
   return (
     <>
-      <div className="slideTabs flex flex-row gap-5">
-        <span
-          className="slideTabs-glider"
-          style={{
-            transform: `translateX(${index * 100}%)`,
-          }}
-        />
-        {Children.map(children, (c, key) =>
-          isValidElement(c) && c.props.value
-            ? cloneElement(c as ReactElement<TabProps>, {
-                onClick: () => handleChange(c.props.value, c.props.index),
-                className: `slideTabs-tab ${
-                  c.props.value === value && "text-red-500"
-                } `,
+      <div className="slideTabs flex flex-col">
+        <div className="slideTabs-tab flex flex-row gap-5">
+          <span
+            className="slideTabs-glider"
+            style={{
+              transform: `translateX(${index * 100}%)`,
+            }}
+          />
+          {Children.map(
+            children,
+            (c) =>
+              isValidElement(c) &&
+              c.props.value &&
+              c.type === Tab &&
+              cloneElement(c as ReactElement<TabProps<HTMLButtonElement>>, {
+                onClick: () => {
+                  handleChange(c.props.value, c.props.index);
+                },
+                className: ` ${c.props.value === value && "text-red-500"} `,
               })
-            : c
-        )}
+          )}
+        </div>
+
+        <div className="slideTabs-panels">
+          {Children.map(
+            children,
+            (child) =>
+              isValidElement(child) &&
+              child.type === TabPanel &&
+              child.props.value === value &&
+              child
+          )}
+        </div>
       </div>
     </>
   );
 };
 
-export const Tab = ({ ...props }: TabProps) => {
+export const Tab = ({ ...props }: TabProps<HTMLButtonElement>) => {
   return <button className={`${props.className} cursor-pointer`} {...props} />;
+};
+
+export const TabPanel = ({ ...props }: TabProps<HTMLDivElement>) => {
+  return <div {...props} />;
 };
 
 export default SlideTabs;

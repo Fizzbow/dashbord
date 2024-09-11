@@ -7,9 +7,4 @@
     position: absolute;
     transition: 0.25s ease-out;
   }
-  input:checked {
-    & ~ .glider {
-      transform: translateX();
-    }
-  }
 }
