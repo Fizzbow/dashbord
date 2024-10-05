@@ -1,5 +1,4 @@
 import {
-  LineChart,
   Line,
   XAxis,
   YAxis,
@@ -12,18 +11,10 @@ import MotionNumber from "motion-number";
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "../ui/chart";
 import { CardHeader, CardTitle } from "../ui/card";
 import InsightCardContain from "./InsightCardContain";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "../ui/select";
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import SlideTabs, { Tab, TabPanel } from "./SlideTabs";
+import SlideTabs, { Tab } from "./SlideTabs";
 
 interface SelectProp {
   val: number;
@@ -112,84 +103,19 @@ const StockTrading = () => {
     <InsightCardContain className="col-start-1 col-end-5">
       <CardHeader className="justify-between items-center">
         <span>AI Insight</span>
-        {/* <SlideTabs defaultIndex={0} defaultValue="1">
-          <Tab value="1" index={0}>
-            tab1
-          </Tab>
-          <Tab index={1} value="2">
-            tab2
-          </Tab>
-
-          <TabPanel index={0} value="1">
-            tab1Content
-          </TabPanel>
-        </SlideTabs> */}
-        <Select
-          onValueChange={(key) => {
-            if (key) {
-              setSelectKey(key);
-            }
-          }}
+        <SlideTabs
+          onChange={(val) => setSelectKey(val)}
+          defaultIndex={0}
+          defaultValue={selectKey}
         >
-          <SelectTrigger>
-            <SelectValue
-              defaultValue={selectKey}
-              placeholder="Select a fruit"
-            />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectGroup>
-              {Object.keys(selectData).map((key) => (
-                <SelectItem value={key} key={key}>
-                  {key}
-                </SelectItem>
-              ))}
-            </SelectGroup>
-          </SelectContent>
-        </Select>
+          {Object.keys(selectData).map((key, index) => (
+            <Tab index={index} value={key}>
+              {key}
+            </Tab>
+          ))}
+        </SlideTabs>
       </CardHeader>
       <CardTitle className="px-6 flex flex-row gap-2 pb-6">
-        {/* {JSON.stringify(selectData[selectKey].val)} */}
-        {/* <MotionNumber
-          value={selectData[selectKey].val}
-          format={{ style: "currency", currency: "USD" }}
-          style={{ lineHeight: 0.85 }}
-          className="~text-xl/4xl font-semibold [--mask-height:0.25em]"
-          after={() => (
-            <MotionNumber
-              className="~text-base/2xl items-center px-[0.3em] font-semibold [--mask-height:0.3em]"
-              value={selectData[selectKey].bullish}
-              format={{ style: "percent", maximumFractionDigits: 2 }}
-              style={{ borderRadius: 999, lineHeight: 0.85 }}
-              first={() => (
-                <motion.svg
-                  className="mr-0.5 size-[0.75em] self-center"
-                  viewBox="0 0 24 24"
-                  strokeWidth="3"
-                  vectorEffect="non-scaling-stroke"
-                  stroke="currentColor"
-                  transition={{
-                    rotate: { type: "spring", duration: 0.5, bounce: 0 },
-                  }}
-                  animate={{
-                    rotate: selectData[selectKey].bullish > 0 ? 0 : -180,
-                  }}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18"
-                  />
-                </motion.svg>
-              )}
-              animate={{
-                backgroundColor:
-                  selectData[selectKey].bullish > 0 ? "#34d399" : "#ef4444",
-              }}
-            />
-          )}
-        /> */}
-
         <MotionNumber
           value={selectData[selectKey].val}
           format={{ style: "currency", currency: "USD" }}

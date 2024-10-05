@@ -1,5 +1,4 @@
 import {
-  ButtonHTMLAttributes,
   Children,
   cloneElement,
   HTMLAttributes,
@@ -14,6 +13,7 @@ export interface SlideTabsProps {
   children: ReactNode;
   defaultValue: string;
   defaultIndex: number;
+  onChange: (val: string) => void;
 }
 
 export interface TabProps<T> extends HTMLAttributes<T> {
@@ -25,6 +25,7 @@ const SlideTabs = ({
   children,
   defaultValue,
   defaultIndex,
+  onChange,
 }: SlideTabsProps) => {
   const [value, setValue] = useState<string>(defaultValue);
   const [index, setIndex] = useState<number>(defaultIndex);
@@ -32,11 +33,12 @@ const SlideTabs = ({
   const handleChange = (newVal: string, index: number) => {
     setValue(newVal);
     setIndex(index);
+    onChange(newVal);
   };
   return (
     <>
       <div className="slideTabs flex flex-col">
-        <div className="slideTabs-tab flex flex-row gap-5">
+        <div className="slideTabs-tab flex flex-row">
           <span
             className="slideTabs-glider"
             style={{
@@ -53,7 +55,8 @@ const SlideTabs = ({
                 onClick: () => {
                   handleChange(c.props.value, c.props.index);
                 },
-                className: ` ${c.props.value === value && "text-red-500"} `,
+                onChange: () => {},
+                className: ` ${c.props.value === value && "!text-[#fff]"} `,
               })
           )}
         </div>
@@ -74,7 +77,12 @@ const SlideTabs = ({
 };
 
 export const Tab = ({ ...props }: TabProps<HTMLButtonElement>) => {
-  return <button className={`${props.className} cursor-pointer`} {...props} />;
+  return (
+    <button
+      {...props}
+      className={`w-[var(--btn-w)] z-[2] h-[var(--btn-h)] text-[hsl(var(--muted-foreground))] cursor-pointer ${props.className}`}
+    />
+  );
 };
 
 export const TabPanel = ({ ...props }: TabProps<HTMLDivElement>) => {
