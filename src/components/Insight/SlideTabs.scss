@@ -1,0 +1,17 @@
+.slideTabs {
+  --btn-w: 100px;
+  --btn-h: 35px;
+  &-tab {
+    transition: color 0.15s ease-in;
+    border-radius: 4px;
+  }
+  &-glider {
+    z-index: 1;
+    background-color: #28282c;
+    width: var(--btn-w);
+    height: var(--btn-h);
+    position: absolute;
+    border-radius: 8px;
+    transition: 0.25s ease-out;
+  }
+}

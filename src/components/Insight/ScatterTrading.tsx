@@ -55,7 +55,15 @@ const ScatterTrading = () => {
     <InsightCardContain className="col-start-5 col-end-7">
       <CardHeader>Analytics</CardHeader>
       <ChartContainer className="flex-1 w-full" config={chartConfig}>
-        <ScatterChart accessibilityLayer>
+        <ScatterChart
+          margin={{
+            top: 5,
+            right: 20,
+            left: 0,
+            bottom: 5,
+          }}
+          accessibilityLayer
+        >
           <CartesianGrid vertical={false} strokeDasharray="3 3" />
           <Legend
             formatter={(value) => {
@@ -68,8 +76,8 @@ const ScatterTrading = () => {
             align="right"
             height={36}
           />
-          <XAxis type="number" dataKey="x" />
-          <YAxis axisLine={false} type="number" dataKey="y" />
+          <XAxis fill="#8E8D8E" tickLine={false} type="number" dataKey="x" />
+          <YAxis tickLine={false} axisLine={false} type="number" dataKey="y" />
           <ChartTooltip content={<ChartTooltipContent />} />
           <Scatter
             name="NVDA"

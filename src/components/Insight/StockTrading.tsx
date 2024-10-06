@@ -1,24 +1,49 @@
 import {
-  LineChart,
   Line,
   XAxis,
   YAxis,
   CartesianGrid,
-  Tooltip,
   Legend,
-  ResponsiveContainer,
   Area,
   ComposedChart,
 } from "recharts";
-import {
-  ChartConfig,
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-} from "../ui/chart";
-import { Card, CardHeader } from "../ui/card";
-import { cn } from "@/lib/utils";
+import MotionNumber from "motion-number";
+import { ChartContainer, ChartTooltip, ChartTooltipContent } from "../ui/chart";
+import { CardHeader, CardTitle } from "../ui/card";
 import InsightCardContain from "./InsightCardContain";
+
+import { useState } from "react";
+import { motion } from "framer-motion";
+import SlideTabs, { Tab } from "./SlideTabs";
+
+interface SelectProp {
+  val: number;
+  per: number;
+  bullish: number;
+}
+
+const selectData: Record<string, SelectProp> = {
+  apple: {
+    val: 5678,
+    per: 1.8,
+    bullish: 0.2,
+  },
+  banana: {
+    val: 788,
+    per: 2.8,
+    bullish: -0.06,
+  },
+  grapes: {
+    val: 1234,
+    per: 5.2,
+    bullish: -0.5,
+  },
+  pineapple: {
+    val: 5555,
+    per: 4.2,
+    bullish: 0.04,
+  },
+};
 
 const data = [
   {
@@ -70,17 +95,73 @@ const chartConfig = {
 };
 
 const StockTrading = () => {
+  const [selectKey, setSelectKey] = useState(() => {
+    const defaultKey = Object.keys(selectData)[0];
+    return defaultKey;
+  });
   return (
     <InsightCardContain className="col-start-1 col-end-5">
-      <CardHeader>AI Insight</CardHeader>
+      <CardHeader className="justify-between items-center">
+        <span>AI Insight</span>
+        <SlideTabs
+          onChange={(val) => setSelectKey(val)}
+          defaultIndex={0}
+          defaultValue={selectKey}
+        >
+          {Object.keys(selectData).map((key, index) => (
+            <Tab index={index} value={key}>
+              {key}
+            </Tab>
+          ))}
+        </SlideTabs>
+      </CardHeader>
+      <CardTitle className="px-6 flex flex-row gap-2 pb-6">
+        <MotionNumber
+          value={selectData[selectKey].val}
+          format={{ style: "currency", currency: "USD" }}
+          after={() => (
+            <MotionNumber
+              value={selectData[selectKey].bullish}
+              className="px-2"
+              format={{ style: "percent", maximumFractionDigits: 2 }}
+              animate={{
+                backgroundColor:
+                  selectData[selectKey].bullish > 0 ? "#38af63" : "#c44a5a",
+              }}
+              style={{ borderRadius: 999 }}
+              first={() => (
+                <motion.svg
+                  className="mr-0.5 size-[0.75em] self-center"
+                  viewBox="0 0 24 24"
+                  strokeWidth="3"
+                  vectorEffect="non-scaling-stroke"
+                  stroke="currentColor"
+                  transition={{
+                    rotate: { type: "spring", duration: 0.5, bounce: 0 },
+                  }}
+                  animate={{
+                    rotate: selectData[selectKey].bullish > 0 ? 0 : -180,
+                  }}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18"
+                  />
+                </motion.svg>
+              )}
+            />
+          )}
+        />
+      </CardTitle>
       <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
         <ComposedChart
           accessibilityLayer
           data={data}
           margin={{
             top: 5,
-            right: 30,
-            left: 20,
+            right: 20,
+            left: 0,
             bottom: 5,
           }}
         >
@@ -98,8 +179,8 @@ const StockTrading = () => {
             </defs>
           </defs>
           <CartesianGrid stroke="#383838" vertical={false} />
-          <XAxis dataKey="name" />
-          <YAxis axisLine={false} />
+          <XAxis tickLine={false} dataKey="name" />
+          <YAxis axisLine={false} tickLine={false} />
           <ChartTooltip content={<ChartTooltipContent />} />
           <Legend />
           <Line

@@ -1,21 +1,51 @@
-/** @type {import('tailwindcss').Config} */
+import fluid, {
+  extract,
+  fontSize,
+  screens as _screens,
+  type FluidThemeConfig,
+} from "fluid-tailwind";
+import typography from "@tailwindcss/typography";
+const { lg: _, xl: __, "2xl": ___, ...screens } = _screens;
+
 module.exports = {
   darkMode: ["class"],
-  content: [
-    "./pages/**/*.{ts,tsx}",
-    "./components/**/*.{ts,tsx}",
-    "./app/**/*.{ts,tsx}",
-    "./src/**/*.{ts,tsx}",
-  ],
-  prefix: "",
-  theme: {
-    container: {
-      center: true,
-      padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
+  content: {
+    files: [
+      "./pages/**/*.{ts,tsx}",
+      "./components/**/*.{ts,tsx}",
+      "./app/**/*.{ts,tsx}",
+      "./src/**/*.{ts,tsx}",
+    ],
+    transform: {
+      mdx: (src) =>
+        src
+          // Ignore classes in code blocks
+          .replaceAll(/```.*?```/gs, "")
+          // Only return stuff in <component>s
+          .match(/<[^/].*?>/g)
+          ?.join() ?? "",
     },
+    extract,
+  },
+  corePlugins: {
+    container: false,
+  },
+  theme: {
+    fontSize,
+    fluid: (({ theme }) => ({
+      defaultScreens: [, theme("screens.xl")],
+    })) satisfies FluidThemeConfig,
+    screens: {
+      xs: "20rem",
+      ...screens,
+    },
+    // container: {
+    //   center: true,
+    //   padding: "2rem",
+    //   screens: {
+    //     "2xl": "1400px",
+    //   },
+    // },
     extend: {
       colors: {
         border: "hsl(var(--border))",
@@ -59,13 +89,10 @@ module.exports = {
       boxShadow: {
         btn: "9px 9px 20px 1px rgba(0, 0, 0, 0.3), -7px -7px 20px 1px rgba(133, 138, 174, 0.38)",
         innerBtn:
-          " inset 9px 9px 20px 1px rgba(0, 0, 0, 0.3), inset -7px -7px 20px 1px rgba(133, 138, 174, 0.38);",
+          "inset 9px 9px 20px 1px rgba(0, 0, 0, 0.3), inset -7px -7px 20px 1px rgba(133, 138, 174, 0.38);",
       },
       textShadow: {
         lg: " 0px 8px 8px rgba(0, 0, 0, 0.25);",
-      },
-      fontSize: {
-        xl: ["50px", "60px"],
       },
       backgroundImage: {
         btn: "linear-gradient(311deg, #3c446b 0%, #4a5176 88.79%)",
@@ -94,5 +121,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), fluid, typography],
 };
