@@ -1,18 +1,26 @@
+import { motion, useDragControls } from "framer-motion";
+
 const Message = () => {
+  const controls = useDragControls();
+
   return (
-    <div className="bg-[#fff] border-[#EBEBEB] border-[1px] border-solid p-4 font-Poppins w-[250px] h-[250px] rounded-[35px]">
+    <div className="bg-[#fff] border-[#EBEBEB] border-[1px] border-solid p-4  w-[250px] h-[250px] rounded-[35px]">
       <header className="flex font-bold  flex-row mb-4 justify-between items-center">
         <span className="text-[18px]">Messages</span>
         <div className="px-[10px] bg-[#0A84FF] rounded-full text-white">36</div>
       </header>
-      <section className="flex flex-col">
-        <Notify
-          title="Justin Stewart"
-          content="And than he told that it was the worst product in the moon"
-          timeStr="3:45PM"
-          notifyNum={3}
-        />
-      </section>
+      {/* <motion.section
+        dragControls={controls}
+        drag="y"
+        className="flex flex-col"
+      > */}
+      <Notify
+        title="Justin Stewart"
+        content="And than he told that it was the worst product in the moon"
+        timeStr="3:45PM"
+        notifyNum={3}
+      />
+      {/* </motion.section> */}
     </div>
   );
 };
@@ -25,7 +33,7 @@ interface NotifyProps {
 
 const Notify = ({ title, content, timeStr, notifyNum }: NotifyProps) => {
   return (
-    <div className="bg-[#F8F8F8] rounded-[20px] p-[16px]">
+    <div className="bg-[#F8F8F8] rounded-[20px] p-[10px] cursor-pointer">
       <header className="flex flex-row justify-between">
         <span className="text-[#2D2E35] font-bold text-[16px]">{title}</span>
         <span className="text-[#B5B7B9] text-[12px]">{timeStr}</span>
@@ -42,5 +50,4 @@ const Notify = ({ title, content, timeStr, notifyNum }: NotifyProps) => {
     </div>
   );
 };
-
 export default Message;
